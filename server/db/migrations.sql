@@ -19,7 +19,7 @@ zip INTEGER
 CREATE TABLE products (
 id  SERIAL PRIMARY KEY,
 name VARCHAR(255) ,
-price INTEGER ,
+price money ,
 color VARCHAR(255) ,
 size VARCHAR(255) ,
 image_url VARCHAR(255)
