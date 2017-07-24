@@ -27,7 +27,7 @@ image_url VARCHAR(255)
 
 CREATE TABLE orders (
 id  SERIAL PRIMARY KEY,
-name INTEGER ,
+name VARCHAR(255) ,
 id_users INTEGER references users(id),
 id_products INTEGER references products(id),
 id_carts INTEGER references carts(id)

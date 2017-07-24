@@ -4,6 +4,7 @@ Bundler.require
 require './models/UserModel'
 require './models/ProductModel'
 require './models/OrderModel'
+require './models/CartModel'
 
 require './controllers/ApplicationController'
 require './controllers/ProductController'
@@ -20,4 +21,4 @@ ActiveRecord::Base.establish_connection(
 
 map('/products'){run ProductController}
 map('/users'){run UserController}	
-# map('/orders'){run OrderController}
+map('/orders'){run OrderController}

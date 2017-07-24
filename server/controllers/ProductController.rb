@@ -1,7 +1,7 @@
-class ProductController < Sinatra::Base
+class ProductController < ApplicationController
 
-	#get request to products/all
-	get '/all' do
+	#get request to products
+	get '/' do
 
 		product = Product.all
 		product.to_json
@@ -15,8 +15,8 @@ class ProductController < Sinatra::Base
 		product.to_json
 
 	end
-	#post request to products/all
-	post '/all' do
+	#post request to products
+	post '/' do
 
 	product_details = JSON.parse(request.body.read)
 	product = Product.new
