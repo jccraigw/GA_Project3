@@ -30,6 +30,7 @@ id  SERIAL PRIMARY KEY,
 name VARCHAR(255) ,
 id_users INTEGER references users(id),
 id_products INTEGER references products(id),
+quantity INTEGER,
 id_carts INTEGER references carts(id)
 );
 

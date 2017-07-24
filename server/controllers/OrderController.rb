@@ -11,6 +11,8 @@ class OrderController < ApplicationController
 	get '/:id' do
 
 		id = params[:id]
+		order = Order.where(id_carts: id)
+		order.to_json
 
 	end
 
@@ -46,6 +48,20 @@ class OrderController < ApplicationController
 		end
 		order.save
 		order.to_json
+
+
+	end
+
+	patch '/:id' do
+
+		id = params[:id]
+		order = Order.find(id)
+		request_body = JSON.parse(request.body.read)
+		order.update_attributes(request_body)
+		order.save
+		Order.all.to_json
+
+
 
 
 	end
