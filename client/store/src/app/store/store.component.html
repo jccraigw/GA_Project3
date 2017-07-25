@@ -1,0 +1,34 @@
+<p>
+  store works!
+</p>
+<button (click)="showUploadForm = !showUploadForm">New</button>
+<button (click)="logout()">Logout</button>
+<div *ngIf="showUploadForm">	
+	<input [(ngModel)]="newProduct.name" placeholder="name">
+	<input [(ngModel)]="newProduct.price" placeholder="price">
+	<input [(ngModel)]="newProduct.color" placeholder="color">
+	<input [(ngModel)]="newProduct.size" placeholder="size">
+	<input [(ngModel)]="newProduct.image_url" placeholder="image link">
+	<button (click)="postProduct()">Submit</button>
+</div>
+
+<div *ngIf="showEditForm">	
+	<input [(ngModel)]="currentProduct.name" placeholder="name">
+	<input [(ngModel)]="currentProduct.price" placeholder="price">
+	<input [(ngModel)]="currentProduct.color" placeholder="color">
+	<input [(ngModel)]="currentProduct.size" placeholder="size">
+	<input [(ngModel)]="currentProduct.image_url" placeholder="image link">
+	<button (click)="patchProduct()">Submit</button>
+</div>
+<table>
+<tr *ngFor="let product of products">
+	<td (click)="goToProduct(product)"><img src="{{product.image_url}}" width="30" height="30"></td>
+	<td>{{product.name}}</td>
+	<td>{{product.price}}</td>
+	<td>{{product.color}}</td>
+	<td>{{product.size}}</td>
+	<button (click)="editProduct(product)">Edit</button>
+	<button (click)="deleteProduct(product)">Delete</button>
+
+</tr>
+</table>

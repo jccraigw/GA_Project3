@@ -25,7 +25,7 @@ class UserController < ApplicationController
     if user && user.authenticate(user_details["password"])
       user.to_json
     else
-      "ACCESS DENIED"
+     {message: "ACCESS DENIED" }.to_json
     end
   end
 end

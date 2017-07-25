@@ -2,17 +2,21 @@ class OrderController < ApplicationController
 
 	#post request to orders
 
-	get '/' do
+	get '/cart' do
 
 		order = Order.all
 		order.to_json
 	end
 
-	get '/:id' do
+	get '/cart/:id' do
 
 		id = params[:id]
-		order = Order.where(id_carts: id)
-		order.to_json
+		order = Order.where(id_users: id)
+		total = order.sum(&:price)
+		p total.round
+		p "total"
+		{orders: order, total: total}.to_json
+	
 
 	end
 
@@ -25,6 +29,11 @@ class OrderController < ApplicationController
 		order.id_users = order_details["id_users"]
 		puts  "id users" + order.id_users.to_s
 		order.id_products = order_details["id_products"]
+		order.quantity = order_details["quantity"]
+		order.price = order_details["price"]
+		order.size = order_details["size"]
+		order.color = order_details["color"]
+		order.image_url = order_details["image_url"]
 
 		orders = Order.find_by(id_users: order.id_users)
 
@@ -52,7 +61,7 @@ class OrderController < ApplicationController
 
 	end
 
-	patch '/:id' do
+	patch '/cart/:id' do
 
 		id = params[:id]
 		order = Order.find(id)
@@ -66,7 +75,7 @@ class OrderController < ApplicationController
 
 	end
 
-	delete '/:id' do
+	delete '/cart/:id' do
 		id = params[:id]
 
 		order = Order.find(id)

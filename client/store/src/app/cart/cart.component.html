@@ -1,0 +1,16 @@
+<div>
+	
+	<tr *ngFor="let order of orders">
+	<img src="{{order.image_url}}" width="100" height="100">
+		<td>{{order.name}}</td>
+	
+		<td>{{order.price}}</td>
+		<td>{{order.color}}</td>
+		<td>{{order.size}}</td>
+
+		<td>{{order.quantity}}</td>
+	
+		<button (click)="deleteOrder(order)">Delete</button>
+	</tr>
+		{{total}}
+</div>
