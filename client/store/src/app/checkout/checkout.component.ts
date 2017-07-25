@@ -17,33 +17,52 @@ import { ActivatedRoute } from '@angular/router';
   id_carts: number;
 }
 
+class User{
+
+  id: number;
+  name: string;
+email: string;
+token: string;
+password_digest: string;
+street: string;
+street_pt_two: string;
+city: string;
+state: string;
+zip: number;
+
+}
+
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class CartComponent{
+export class CheckoutComponent {
 
-		orders: Order[] = [];
-		total: number;
-
-
-  constructor(private http: Http, private router: Router) {
-
-  		this.getOrders();
+	orders: Order[] = [];
+	user: {};
+	total: number;
+	newShipping: User = new User();
+	showEditForm: boolean = false;
 
 
+
+
+  constructor(private http: Http, private router: Router) { 
+
+  				this.getOrders();
   }
-
-
 
   getOrders(){
 
 
-   	this.http.get('http://localhost:9393/orders/cart/' + window.localStorage.id_user + '?token=' + window.localStorage.token ).subscribe(response => {
+   	this.http.get('http://localhost:9393/orders/cart/' + window.localStorage.id_user + '/checkout?token=' + window.localStorage.token ).subscribe(response => {
 
    		this.orders = response.json().orders;
    		this.total = response.json().total;
+   		this.user = response.json().user;
+   		
+
 
    	}, err =>{
 
@@ -59,6 +78,24 @@ export class CartComponent{
    	})
   }
 
+  	patchShipping(){
+		this.showEditForm = false
+   		this.http.patch('http://localhost:9393/users/' + window.localStorage.id_user + '?token=' + window.localStorage.token, this.newShipping).subscribe(response =>{
+
+
+   			this.user = response.json();
+
+	})
+
+	}
+
+	editShipping(user){
+
+		this.showEditForm = true;
+   		this.newShipping = Object.assign({}, user)
+	}	
+
+	
   deleteOrder(order){
 
 
@@ -83,8 +120,6 @@ export class CartComponent{
 
   }
 
-  checkoutOrder(){
 
-  	this.router.navigate(['/checkout'])
-  }
+
 }

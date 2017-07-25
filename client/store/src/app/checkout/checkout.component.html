@@ -1,0 +1,46 @@
+<div>
+	<tr *ngFor="let order of orders">
+	<img src="{{order.image_url}}" width="50" height="50">
+		<td>{{order.name}}</td>
+	
+		<td>{{order.price}}</td>
+		<td>{{order.color}}</td>
+		<td>{{order.size}}</td>
+
+		<td>{{order.quantity}}</td>
+	
+		<button (click)="deleteOrder(order)">Delete</button>
+		</tr>
+		
+</div>
+
+
+
+
+		{{total}}<br>
+
+		
+		<div *ngIf="user">
+		{{user.name}}<br>
+		{{user.street}}<br>
+		{{user.street_pt_two}}<br>
+		{{user.city}}<br>
+		{{user.state}}<br>
+		{{user.zip}}<br>
+		</div>
+		
+
+		<button (click)="editShipping(user)">Edit</button>
+
+		<div *ngIf="showEditForm">	
+	<input [(ngModel)]="newShipping.name" placeholder="name">
+	<input [(ngModel)]="newShipping.street" placeholder="street">
+	<input [(ngModel)]="newShipping.street_pt_two" placeholder="street part two">
+	<input [(ngModel)]="newShipping.city" placeholder="city">
+	<input [(ngModel)]="newShipping.state" placeholder="state">
+	<input [(ngModel)]="newShipping.zip" placeholder="zip">
+	<button (click)="patchShipping()">Submit</button>
+</div>
+
+
+		

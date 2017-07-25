@@ -20,6 +20,21 @@ class OrderController < ApplicationController
 
 	end
 
+
+	get '/cart/:id/checkout' do
+
+		id = params[:id]
+		order = Order.where(id_users: id)
+		total = order.sum(&:price)
+		user = User.find(id)
+
+		p total.round
+		p "total"
+		{orders: order, total: total, user: user}.to_json
+	
+
+	end
+
 	post '/' do
 
 
@@ -82,7 +97,8 @@ class OrderController < ApplicationController
 		order.destroy
 
 		orders = Order.all
-		orders.to_json
+		total = orders.sum(&:price)
+		{orders: orders, total: total}.to_json
 
 	end
 
