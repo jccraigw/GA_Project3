@@ -19,9 +19,16 @@ export class LoginComponent{
   login(){
     this.http.post('http://localhost:9393/users/login', this.user).subscribe(response => {
       window.localStorage.setItem("token",response.json().token)
+      debugger
       window.localStorage.setItem("id_user", response.json().id)
       this.router.navigate(['/products'])
     })
+  }
+
+  goToJoin(){
+
+
+     this.router.navigate(['/register'])
   }
 
  

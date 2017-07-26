@@ -48,7 +48,18 @@ export class DetailComponent {
   	this.http.get('http://localhost:9393/products/' + id +'?token=' + window.localStorage.token).subscribe(response =>{
 
   		this.product = response.json();
-  	})
+  	}, err =>{
+
+       //if permission to page is denied
+       if(err.status === 403){
+
+         this.router.navigate(['/login'])
+
+       }else{
+
+         alert("ERROR");
+       }
+     })
 
   }
 
@@ -67,7 +78,18 @@ export class DetailComponent {
 
 
           this.router.navigate(['/orders/cart'])
-    })
+    }, err =>{
+
+       //if permission to page is denied
+       if(err.status === 403){
+
+         this.router.navigate(['/login'])
+
+       }else{
+
+         alert("ERROR");
+       }
+     })
 
   }
 

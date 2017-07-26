@@ -15,8 +15,6 @@
 </div>
 
 
-
-
 		{{total}}<br>
 
 		
@@ -32,7 +30,7 @@
 
 		<button (click)="editShipping(user)">Edit</button>
 
-		<div *ngIf="showEditForm">	
+<div *ngIf="showEditForm">	
 	<input [(ngModel)]="newShipping.name" placeholder="name">
 	<input [(ngModel)]="newShipping.street" placeholder="street">
 	<input [(ngModel)]="newShipping.street_pt_two" placeholder="street part two">
@@ -41,6 +39,8 @@
 	<input [(ngModel)]="newShipping.zip" placeholder="zip">
 	<button (click)="patchShipping()">Submit</button>
 </div>
+
+
 
 
 		

@@ -6,6 +6,10 @@ class UserController < ApplicationController
     user = User.all
     user.to_json
   end
+  get '/register' do
+    user = User.all
+    user.to_json
+  end
   #post request to /users/register
   post '/register' do
     user_details = JSON.parse(request.body.read)

@@ -35,7 +35,7 @@ export class StoreComponent{
 
    getProducts(){
    	
-   	this.http.get('http://localhost:9393/products?token=' + window.localStorage.token ).subscribe(response => {
+   	this.http.get('http://localhost:9393/products?token=' + window.localStorage.token).subscribe(response => {
 
    		this.products = response.json();
    	}, err =>{
@@ -58,7 +58,7 @@ export class StoreComponent{
    		this.showUploadForm = false
    		this.http.post('http://localhost:9393/products?token=' + window.localStorage.token, this.newProduct).subscribe(response => {
 
-   			this.products =response.json();
+   			this.products = response.json();
    		}, err =>{
 
    		//if permission to page is denied
@@ -76,7 +76,7 @@ export class StoreComponent{
    patchProduct(){
 
    		this.showEditForm = false
-   		this.http.patch('http://localhost:9393/products/' + this.currentProduct.id, this.currentProduct).subscribe(response =>{
+   		this.http.patch('http://localhost:9393/products/' + this.currentProduct.id + '?token=' + window.localStorage.token , this.currentProduct).subscribe(response =>{
 
 
    			this.products = response.json();
@@ -92,7 +92,7 @@ export class StoreComponent{
    }
    deleteProduct(product){
 
-   		this.http.delete('http://localhost:9393/products/' + product.id).subscribe(response => {
+   		this.http.delete('http://localhost:9393/products/' + product.id + '?token=' + window.localStorage.token).subscribe(response => {
 
    				this.products = response.json();
 
@@ -101,6 +101,11 @@ export class StoreComponent{
    goToProduct(product){
     this.router.navigate(['/products/', product.id])
   }
+   login(){
+
+     this.router.navigate(['/login'])
+
+   }
 
    logout(){
 

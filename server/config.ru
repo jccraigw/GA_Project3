@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require
 
+
 require './models/UserModel'
 require './models/ProductModel'
 require './models/OrderModel'
@@ -25,3 +26,5 @@ map('/products'){run ProductController}
 map('/users'){run UserController}	
 map('/orders'){run OrderController}
 map('/reviews'){run ReviewController}
+map('/register'){run UserController}
+

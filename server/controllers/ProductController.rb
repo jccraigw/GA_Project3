@@ -27,7 +27,7 @@ class ProductController < ApplicationController
 	product.image_url = product_details["image_url"]
 
 	product.save
-	product.to_json
+	Product.all.to_json
 
 
 	end

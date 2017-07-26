@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { DetailComponent } from './detail/detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { JoinComponent } from './join/join.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
     {
     path: 'checkout',
     component: CheckoutComponent
+  },
+    {
+    path: 'register',
+    component: JoinComponent
   }
 
 ]
@@ -46,7 +51,8 @@ const routes: Routes = [
     LoginComponent,
     DetailComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,
