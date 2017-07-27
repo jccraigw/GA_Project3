@@ -14,11 +14,16 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     bcrypt (3.1.11)
+    commonjs (0.2.7)
     concurrent-ruby (1.0.5)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
+    font-awesome-less (4.7.0)
+      less (>= 2.4.0)
     i18n (0.8.6)
     json (2.1.0)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
     minitest (5.10.3)
     multipart-post (2.0.0)
     mustermann (1.0.0)
@@ -46,6 +51,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  font-awesome-less
   json
   pg
   sinatra

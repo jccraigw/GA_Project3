@@ -1,45 +1,62 @@
-<div>
-	<tr *ngFor="let order of orders">
-	<img src="{{order.image_url}}" width="50" height="50">
-		<td>{{order.name}}</td>
-	
-		<td>{{order.price}}</td>
-		<td>{{order.color}}</td>
-		<td>{{order.size}}</td>
-
-		<td>{{order.quantity}}</td>
-	
-		<button (click)="deleteOrder(order)">Delete</button>
-		</tr>
-		
-</div>
-
-
-		{{total}}<br>
-
-		
-		<div *ngIf="user">
-		{{user.name}}<br>
-		{{user.street}}<br>
-		{{user.street_pt_two}}<br>
-		{{user.city}}<br>
-		{{user.state}}<br>
-		{{user.zip}}<br>
+<div class="checkout_wrapper">
+	<div class="header_wrapper">
+			<div class="logo_wrapper">
+				<div class="logo">NOxLOGO</div>
+			</div>	
 		</div>
-		
+	<div class="main_wrapper">	
+		<div class="cart_details">
+			<h4>Items</h4>
+			<tr *ngFor="let order of orders">
+			<div class="cart_order">
+				<img src="{{order.image_url}}" width="50" height="100">
+					<td>{{order.name}}</td><br>
+					<td>Price: {{order.price}}</td><br>
+					<td>Color: {{order.color}}</td><br>
+					<td>Size: {{order.size}}</td><br>
+					<td>Qty: {{order.quantity}}</td><br>
+					<button class="delete_btn" (click)="deleteOrder(order)">Delete</button>
+					<hr>
+			</div>
+			</tr>	
+		</div>
+		<div class="order_total">
+				
+			<h4>Total</h4>
+			${{total}}<br>
+		</div>
+			
+		<div class="shipping_wrapper">
+			<h4>Shipping Address</h4>
+			<div *ngIf="user">
+			{{user.name}}<br>
+			{{user.street}}<br>
+			{{user.street_pt_two}}<br>
+			{{user.city}}<br>
+			{{user.state}}<br>
+			{{user.zip}}<br>
+			</div>
+			
 
-		<button (click)="editShipping(user)">Edit</button>
+			<button class="edit_btn" (click)="editShipping(user)">Edit</button>
 
-<div *ngIf="showEditForm">	
-	<input [(ngModel)]="newShipping.name" placeholder="name">
-	<input [(ngModel)]="newShipping.street" placeholder="street">
-	<input [(ngModel)]="newShipping.street_pt_two" placeholder="street part two">
-	<input [(ngModel)]="newShipping.city" placeholder="city">
-	<input [(ngModel)]="newShipping.state" placeholder="state">
-	<input [(ngModel)]="newShipping.zip" placeholder="zip">
-	<button (click)="patchShipping()">Submit</button>
+			<div *ngIf="showEditForm">	
+				<input class="form_field" [(ngModel)]="newShipping.name" placeholder="name"><br>
+				<input class="form_field"  [(ngModel)]="newShipping.street" placeholder="street"><br>
+				<input class="form_field"  [(ngModel)]="newShipping.street_pt_two" placeholder="street part two"><br>
+				<input class="form_field" [(ngModel)]="newShipping.city" placeholder="city"><br>
+				<input class="form_field" [(ngModel)]="newShipping.state" placeholder="state"><br>
+				<input class="form_field"  [(ngModel)]="newShipping.zip" placeholder="zip"><br>
+				<button class="edit_btn"  (click)="patchShipping()">Submit</button>
+			</div>
+		</div>
+		<div class="payment">
+			<p>Payment form here</p>
+
+		</div>
+
+	</div>	
 </div>
-
 
 
 
