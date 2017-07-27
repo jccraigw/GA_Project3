@@ -2,19 +2,19 @@
 <div class="join_wrapper">
 	<div class="header_wrapper">
 		<div class="logo_wrapper">
-			<h1>LOGO</h1>
+			<div class="logo">NOxLOGO</div>
 		</div>
 	</div>
 	<div class="main_wrapper">
 		<div class="join_form_wrapper">
-			<input class="form-field" [(ngModel)]="newUser.name" placeholder="name">
-			<input class="form-field" [(ngModel)]="newUser.email" placeholder="email">
-			<input class="form-field" [(ngModel)]="newUser.password" placeholder="password">
-			<input class="form-field" [(ngModel)]="newUser.street" placeholder="street">
-			<input class="form-field" [(ngModel)]="newUser.street_pt_two" placeholder="street part two">
-			<input class="form-field" [(ngModel)]="newUser.city" placeholder="city">
-			<input class="form-field" [(ngModel)]="newUser.state" placeholder="state">
-			<input class="form-field" [(ngModel)]="newUser.zip" placeholder="zip"><br>
+			<input class="form-field" [(ngModel)]="newUser.name" placeholder="Name">
+			<input class="form-field" [(ngModel)]="newUser.email" placeholder="Email">
+			<input class="form-field" [(ngModel)]="newUser.password" placeholder="Password">
+			<input class="form-field" [(ngModel)]="newUser.street" placeholder="Address Line 1">
+			<input class="form-field" [(ngModel)]="newUser.street_pt_two" placeholder="Address Line 2">
+			<input class="form-field" [(ngModel)]="newUser.city" placeholder="City">
+			<input class="form-field" [(ngModel)]="newUser.state" placeholder="State">
+			<input class="form-field" [(ngModel)]="newUser.zip" placeholder="Zip"><br>
 			<button class="join-button" (click)="postUser()">Create Account</button>			
 		</div>
 		

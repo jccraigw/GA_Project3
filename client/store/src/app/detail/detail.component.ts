@@ -27,6 +27,9 @@ class Order{
   id_carts: number;
 }
 
+  
+
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -36,11 +39,39 @@ export class DetailComponent {
 
 	product: Product = new Product();
   newOrder: Order = new Order();
+
+   qtys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; 
+  order2 = {
+
+    qty: 1
+  };
+  types = [ 'S', 'M', 'L', 'XL' ];
+   order = {
+      type: 'M'          
+  }; 
+
+ 
+
   
+  
+
 
   constructor(private route: ActivatedRoute, private http: Http,  private router: Router) {
   	let id = this.route.snapshot.params.id;
   	this.getProduct(id);
+
+
+
+  }
+
+
+    callType(value){
+    console.log(value);
+    this.order.type=value;
+  }
+    callQty(num){
+    console.log(num);
+    this.order2.qty=num;
   }
 
   getProduct(id){
@@ -68,9 +99,9 @@ export class DetailComponent {
      this.newOrder.name = product.name;
      this.newOrder.id_users = window.localStorage.id_user * 1;
      this.newOrder.id_products = product.id;
-     this.newOrder.quantity = this.newOrder.quantity *1;
+     this.newOrder.quantity =this.order2.qty;
      this.newOrder.price = product.price;
-     this.newOrder.size = product.size;
+     this.newOrder.size = this.order.type;
      this.newOrder.color = product.color;
      this.newOrder.image_url = product.image_url;
 

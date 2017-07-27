@@ -1,27 +1,42 @@
 *{
 	// border: 1px solid red;
 }
+.join_wrapper{
+
+		margin-top: -40px;
+}
 
 .header_wrapper{
 
 	width: 100%;
-	height: 150px;
-	line-height: 120px;
+	height: 50px;
+	line-height: 50px;
 	vertical-align: center;
-	background: url('/assets/images/bgtile.jpg') no-repeat;
-	background-repeat: repeat-x;
 	background-size: contain;
-	color: white;
+
+	
 	font-size: 20px;
-	text-align: center;
-	margin-top: -30px;
+	position: fixed;
+	left:0;
 
 
+}
+.logo_wrapper{
+	height: 50px;
+	flex-grow: 1;
+	border-bottom: 1px solid #d4d7db;
+	
+
+}
+.logo{
+
+	margin-top: 35px;
+	margin-left: 20px;
 }
 
 .main_wrapper{
 
-	margin-top: 30px;
+	
 	
 	width: 100%;
 	display: flex;
@@ -30,7 +45,7 @@
 	
 }
 .join_form_wrapper{
-
+	margin-top: 100px;
 	text-align: center;
 	flex-grow:1;
 }
