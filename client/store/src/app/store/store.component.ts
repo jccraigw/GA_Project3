@@ -26,6 +26,7 @@ export class StoreComponent{
 	showUploadForm: boolean = false;
 	showEditForm: boolean = false;
   cart_num: number;
+  search: string="";
    
 
 
@@ -119,6 +120,16 @@ export class StoreComponent{
    getCart(){
 
      this.router.navigate(['/orders/cart'])
+   }
+
+   searchProducts(){
+
+
+     this.http.post('http://localhost:9393/products/search' + '?token=' + window.localStorage.token, {name: this.search}).subscribe(response =>{
+
+
+         this.products = response.json();
+     })
    }
 
 

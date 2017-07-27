@@ -1,12 +1,12 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="home_wrapper">
 	<div class="header_wrapper">
 		<div class="logo_wrapper">
 			<div class="logo">NOxLOGO</div>
 		</div>
 		<div class="search_wrapper">
-			<input class="form-field" type="text" name="search" placeholder="search...">
-			<button class="search_btn">Search</button>
+			<input class="form-field" [(ngModel)]="search" placeholder="search...">
+			<button class="search_btn" (click)="searchProducts()">Search</button>
 		</div>
 		<div class="cart_wrapper">
 			<button class="cart_btn" (click)="getCart()"><div class="cart">Cart <span class="cart_num">{{cart_num}}</span></div></button>

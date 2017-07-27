@@ -31,6 +31,14 @@ class ProductController < ApplicationController
 
 
 	end
+	#post request to products/search
+	post '/search' do
+		request_body = JSON.parse(request.body.read)
+		products = Product.where("name ilike ?", "%" + request_body["name"] + "%")
+		
+		products.to_json
+
+	end
 	#patch request to products/:id
 	patch '/:id' do
 
