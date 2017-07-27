@@ -90,4 +90,9 @@ export class CartComponent{
 
   	this.router.navigate(['/checkout'])
   }
+    back(){
+
+     this.router.navigate(['/products'])
+   }
+
 }

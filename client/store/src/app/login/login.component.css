@@ -82,3 +82,6 @@ hr{
 	background-color: white;
 	outline: none;
 }
+a:hover {
+ cursor:pointer;
+}

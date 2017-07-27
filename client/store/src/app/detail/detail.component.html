@@ -2,7 +2,7 @@
 <div class="detail_wrapper">
 	<div class="header_wrapper">
 		<div class="logo_wrapper">
-			<div class="logo">NOxLOGO</div>
+			<a (click)="back()"><div class="logo">NOxLOGO</div></a>
 		</div>
 	</div>
 	<div class="main_wrapper">
@@ -24,8 +24,26 @@
     </select><br><br>
 		<!-- 	<input [(ngModel)]="newOrder.quantity" placeholder="Quantity"><br><br> -->
 			<button class="add_btn" (click)="orderProduct(product)">Add to Cart</button>
+
+				<div class="review"><br><br>
+			<button class="review_btn" (click)="showUploadForm = !showUploadForm">Write A Review</button>
+	
+			<div *ngIf="showUploadForm">	
+			
+				<input [(ngModel)]="newReview.name" placeholder="name"><br>
+					<input [(ngModel)]="newReview.text" placeholder="text"><br>
+				<button class="submit_btn" (click)="postReview()">Submit</button>
+			</div>
+			<br><br>
+			<div class="reviews_title">Reviews</div>
+			<br>
+
+			<div class="reviews" *ngFor="let rev of review">{{rev.name}} : {{rev.text}}</div>
+			
 		</div>
 		
+		</div>
+	
 	</div>
 </div>	
 

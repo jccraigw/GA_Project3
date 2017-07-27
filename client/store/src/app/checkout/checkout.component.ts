@@ -61,6 +61,7 @@ export class CheckoutComponent {
    		this.orders = response.json().orders;
    		this.total = response.json().total;
    		this.user = response.json().user;
+     
    		
 
 
@@ -104,6 +105,7 @@ export class CheckoutComponent {
 
   		this.orders = response.json().orders;
   		this.total = response.json().total;
+       window.localStorage.setItem("cart_num", response.json().cart_num)
   	}, err =>{
 
    		//if permission to page is denied
@@ -119,6 +121,12 @@ export class CheckoutComponent {
 
 
   }
+
+    back(){
+
+     this.router.navigate(['/products'])
+   }
+
 
 
 

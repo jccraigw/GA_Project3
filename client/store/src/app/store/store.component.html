@@ -2,7 +2,7 @@
 <div class="home_wrapper">
 	<div class="header_wrapper">
 		<div class="logo_wrapper">
-			<div class="logo">NOxLOGO</div>
+			<a (click)="back(target)"><div class="logo">NOxLOGO</div></a>
 		</div>
 		<div class="search_wrapper">
 			<input class="form-field" [(ngModel)]="search" placeholder="search...">
@@ -16,7 +16,7 @@
 			<button class="logout_btn" (click)="logout()">Log Out</button>
 		</div>	
 	</div>
-	<div class="main_wrapper">
+	<div #target class="main_wrapper">
 		<div class="product_wrapper">
 			<div class="products" *ngFor="let product of products">
 		

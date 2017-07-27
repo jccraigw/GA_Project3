@@ -62,5 +62,10 @@ export class JoinComponent{
    	})
    }
 
+   back(){
+
+     this.router.navigate(['/login'])
+   }
+
   
 }

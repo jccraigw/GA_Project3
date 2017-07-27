@@ -30,6 +30,10 @@ export class LoginComponent{
 
      this.router.navigate(['/register'])
   }
+    back(){
+
+     this.router.navigate(['/login'])
+   }
 
  
 }

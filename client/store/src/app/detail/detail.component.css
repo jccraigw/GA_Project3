@@ -72,3 +72,24 @@
 	outline: none;
 	color:white;
 }
+a:hover {
+ cursor:pointer;
+}
+.reviews_title{
+
+	border-bottom: 1px solid #d4d7db;
+}
+
+.review_btn{
+		border: none;
+	background-color: black;
+	outline: none;
+	color:white;
+}
+.submit_btn{
+
+		
+	border: none;
+	background-color: white;
+	outline: none;
+}

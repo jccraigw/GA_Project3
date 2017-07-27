@@ -6,6 +6,8 @@ class ProductController < ApplicationController
 		product = Product.all
 		product.to_json
 
+		
+
 	end
 	#get request to products/:id
 	get '/:id' do

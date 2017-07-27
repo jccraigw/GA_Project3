@@ -27,6 +27,13 @@ class Order{
   id_carts: number;
 }
 
+class Review{
+
+  name: string;
+  text: string;
+  id_products: number;
+}
+
  
 
 
@@ -39,7 +46,9 @@ export class DetailComponent {
 
 	product: Product = new Product();
   newOrder: Order = new Order();
-
+  review: Review[] = [];
+  newReview: Review = new Review();
+    showUploadForm: boolean = false;
    qtys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; 
   order2 = {
 
@@ -62,8 +71,9 @@ export class DetailComponent {
   	let id = this.route.snapshot.params.id;
   	this.getProduct(id);
 
-
-
+ 
+      this.getReviews(id);
+  
   }
 
 
@@ -93,6 +103,14 @@ export class DetailComponent {
          alert("ERROR");
        }
      })
+
+  }
+  getReviews(id){
+    this.http.get('http://localhost:9393/reviews/' + id +'?token=' + window.localStorage.token).subscribe(response =>{
+
+
+      this.review = response.json();
+    })
 
   }
 
@@ -127,7 +145,25 @@ export class DetailComponent {
      })
 
   }
+  postReview(){
+    let id = this.route.snapshot.params.id;
+    // send post route to create new review
+      this.showUploadForm = false
+    this.newReview.id_products = id;
+    this.http.post('http://localhost:9393/reviews?token=' + window.localStorage.token, this.newReview).subscribe(response =>{
 
+          console.log(this.review)
+          this.review = response.json();
+
+    })
+
+
+  }
+
+  back(){
+
+     this.router.navigate(['/products'])
+   }
 
 
 }

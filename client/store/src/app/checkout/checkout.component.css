@@ -96,3 +96,6 @@ hr{
 	padding-left: 10px;
 	outline: none;
 }
+a:hover {
+ cursor:pointer;
+}

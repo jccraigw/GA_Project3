@@ -132,6 +132,11 @@ export class StoreComponent{
      })
    }
 
+ back(el) {
+    el.scrollIntoView({ behavior: "smooth" });
+}
+
+
 
  
 

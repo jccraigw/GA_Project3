@@ -128,3 +128,6 @@ text-align: center;
 	outline: none;
 	color:white;
 }
+a:hover {
+ cursor:pointer;
+}

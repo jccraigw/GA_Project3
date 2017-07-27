@@ -9,7 +9,7 @@ class ReviewController < ApplicationController
 	get '/:id' do
 
 		id = params[:id]
-		review = Review.find(id)
+		review = Review.where(id_products: id)
 		review.to_json
 
 	end
@@ -21,9 +21,10 @@ class ReviewController < ApplicationController
 		review.name = request_body["name"]
 		review.text = request_body["text"]
 		review.id_products = request_body["id_products"]
-
+		id = review.id_products
 		review.save
-		review.to_json
+		reviews = Review.where(id_products: id)
+		reviews.to_json
 
 	end
 
