@@ -27,7 +27,7 @@ class Order{
   id_carts: number;
 }
 
-  
+ 
 
 
 @Component({
@@ -49,6 +49,8 @@ export class DetailComponent {
    order = {
       type: 'M'          
   }; 
+  cart_num: number;
+  
 
  
 
@@ -107,6 +109,8 @@ export class DetailComponent {
 
      this.http.post('http://localhost:9393/orders?token=' + window.localStorage.token, this.newOrder).subscribe(response =>{
 
+             
+         window.localStorage.setItem("cart_num", response.json().cart_num)
 
           this.router.navigate(['/orders/cart'])
     }, err =>{

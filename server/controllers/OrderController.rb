@@ -11,11 +11,16 @@ class OrderController < ApplicationController
 	get '/cart/:id' do
 
 		id = params[:id]
-		order = Order.where(id_users: id)
-		total = order.sum(&:price)
+		orders = Order.where(id_users: id)
+		total = 0;
+		cart_num = 0;
+		orders.each do |order|
+		total = total + order.price * order.quantity
+		cart_num = cart_num + order.quantity
+		end
 		p total.round
-		p "total"
-		{orders: order, total: total}.to_json
+		
+		{orders: orders, total: total, cart_num: cart_num }.to_json
 	
 
 	end
@@ -24,13 +29,19 @@ class OrderController < ApplicationController
 	get '/cart/:id/checkout' do
 
 		id = params[:id]
-		order = Order.where(id_users: id)
-		total = order.sum(&:price)
+		orders = Order.where(id_users: id)
+		
 		user = User.find(id)
+		total = 0;
+		orders.each do |order|
+		total = total + order.price * order.quantity
+		end
+		
+
 
 		p total.round
 		p "total"
-		{orders: order, total: total, user: user}.to_json
+		{orders: orders, total: total, user: user}.to_json
 	
 
 	end
@@ -49,6 +60,8 @@ class OrderController < ApplicationController
 		order.size = order_details["size"]
 		order.color = order_details["color"]
 		order.image_url = order_details["image_url"]
+
+
 
 		orders = Order.find_by(id_users: order.id_users)
 
@@ -70,8 +83,12 @@ class OrderController < ApplicationController
 			 order.id_carts = orders.id_carts
 		
 		end
+	
+		
+
 		order.save
-		order.to_json
+
+			{order: order}.to_json
 
 
 	end
@@ -97,8 +114,13 @@ class OrderController < ApplicationController
 		order.destroy
 
 		orders = Order.all
-		total = orders.sum(&:price)
-		{orders: orders, total: total}.to_json
+		total = 0;
+		cart_num = 0;
+		orders.each do |order|
+		total = total + order.price * order.quantity
+		cart_num = cart_num + order.quantity
+		end
+		{orders: orders, total: total, cart_num: cart_num }.to_json
 
 	end
 

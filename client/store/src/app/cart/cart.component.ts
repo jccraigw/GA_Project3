@@ -26,6 +26,7 @@ export class CartComponent{
 
 		orders: Order[] = [];
 		total: number;
+    cart_num: number;
 
 
   constructor(private http: Http, private router: Router) {
@@ -44,6 +45,7 @@ export class CartComponent{
 
    		this.orders = response.json().orders;
    		this.total = response.json().total;
+        window.localStorage.setItem("cart_num", response.json().cart_num)
 
    	}, err =>{
 
@@ -67,6 +69,7 @@ export class CartComponent{
 
   		this.orders = response.json().orders;
   		this.total = response.json().total;
+      window.localStorage.setItem("cart_num", response.json().cart_num)
   	}, err =>{
 
    		//if permission to page is denied

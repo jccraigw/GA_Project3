@@ -25,6 +25,8 @@ export class StoreComponent{
 	currentProduct: Product = new Product();
 	showUploadForm: boolean = false;
 	showEditForm: boolean = false;
+  cart_num: number;
+   
 
 
 
@@ -38,6 +40,8 @@ export class StoreComponent{
    	this.http.get('http://localhost:9393/products?token=' + window.localStorage.token).subscribe(response => {
 
    		this.products = response.json();
+       this.cart_num = window.localStorage.cart_num;
+
    	}, err =>{
 
    		//if permission to page is denied
@@ -111,6 +115,10 @@ export class StoreComponent{
 
    		window.localStorage.clear();
     	this.router.navigate(['/login'])
+   }
+   getCart(){
+
+     this.router.navigate(['/orders/cart'])
    }
 
 
