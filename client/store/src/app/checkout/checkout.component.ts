@@ -130,4 +130,33 @@ export class CheckoutComponent {
 
 
 
+  openCheckout() {
+
+    var self = this
+    var handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_uOVzn2S0ha9lIfbrQQVftaeb',
+      locale: 'auto',
+      token: function (token: any) {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        console.log(token);
+
+        self.http.post('http://localhost:9393/charges?token='+ window.localStorage.token, {"stripeToken": token.id}).subscribe(response =>{
+
+                  console.log("charged");
+
+        })
+      }
+    });
+
+    handler.open({
+      name: 'Demo Site',
+      description: '2 widgets',
+      amount: this.total * 100
+    });
+
+  }
+
+
+
 }

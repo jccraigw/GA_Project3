@@ -13,6 +13,7 @@ require './controllers/ProductController'
 require './controllers/UserController'
 require './controllers/OrderController'
 require './controllers/ReviewController'
+require './controllers/ChargesController'
 
 run Sinatra::Application
 
@@ -27,4 +28,5 @@ map('/users'){run UserController}
 map('/orders'){run OrderController}
 map('/reviews'){run ReviewController}
 map('/register'){run UserController}
+map('/charges'){run ChargesController}
 

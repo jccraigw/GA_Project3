@@ -41,6 +41,7 @@ export class StoreComponent{
    	this.http.get('http://localhost:9393/products?token=' + window.localStorage.token).subscribe(response => {
 
    		this.products = response.json();
+       
        this.cart_num = window.localStorage.cart_num;
 
    	}, err =>{
