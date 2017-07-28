@@ -33,7 +33,7 @@ CHECKOUT PAGE
 
 ## Schema
 
-[Imgur](http://i.imgur.com/RXCGRLp.png)
+- SQL database schema - [Imgur](http://i.imgur.com/RXCGRLp.png)
 
 ## Wireframes
 
@@ -44,7 +44,7 @@ CHECKOUT PAGE
 
 ## Development Workflow
 
-- https://trello.com/b/G3j1S3W8/project-3-store
+- Trello Board - https://trello.com/b/G3j1S3W8/project-3-store
 
 ## Technologies Used
 
