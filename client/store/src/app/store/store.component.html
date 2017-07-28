@@ -29,6 +29,11 @@
 			
 
 		</div>
+
+	</div>
+
+	<div class="footer_wrapper">
+
 	<!-- 	<button (click)="showUploadForm = !showUploadForm">New</button>
 	
 	<div *ngIf="showUploadForm">	
@@ -39,43 +44,21 @@
 		<input [(ngModel)]="newProduct.image_url" placeholder="image link">
 		<button (click)="postProduct()">Submit</button>
 	</div> -->
-	</div>
-
-	<div class="footer_wrapper">
 		
 	</div>
 </div>	
 
 
-<!-- <button (click)="showUploadForm = !showUploadForm">New</button>
-	
-	<div *ngIf="showUploadForm">	
-		<input [(ngModel)]="newProduct.name" placeholder="name">
-		<input [(ngModel)]="newProduct.price" placeholder="price">
-		<input [(ngModel)]="newProduct.color" placeholder="color">
-		<input [(ngModel)]="newProduct.size" placeholder="size">
-		<input [(ngModel)]="newProduct.image_url" placeholder="image link">
-		<button (click)="postProduct()">Submit</button>
-	</div> -->
 
-	<!-- <div *ngIf="showEditForm">	
+
+	<!-- <div *ngIf="showEditForm">	 
 		<input [(ngModel)]="currentProduct.name" placeholder="name">
 		<input [(ngModel)]="currentProduct.price" placeholder="price">
 		<input [(ngModel)]="currentProduct.color" placeholder="color">
 		<input [(ngModel)]="currentProduct.size" placeholder="size">
 		<input [(ngModel)]="currentProduct.image_url" placeholder="image link">
 		<button (click)="patchProduct()">Submit</button>
-	</div>
+	</div> -->
 
 
-		<div class="products" *ngFor="let product of products">
 		
-			<td (click)="goToProduct(product)"><img src="{{product.image_url}}" width="100" height="100"></td>
-			<td>{{product.name}}</td>
-			<td>{{product.price}}</td>
-			<td>{{product.color}}</td>
-			<td>{{product.size}}</td>
-			<button (click)="editProduct(product)">Edit</button>
-			<button (click)="deleteProduct(product)">Delete</button>
-			</div>
- -->

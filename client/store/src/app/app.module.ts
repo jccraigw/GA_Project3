@@ -11,7 +11,7 @@ import { DetailComponent } from './detail/detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { JoinComponent } from './join/join.component';
-import { StripeFormComponent } from './stripe-form/stripe-form.component';
+
 
 const routes: Routes = [
   {
@@ -54,7 +54,7 @@ const routes: Routes = [
     CartComponent,
     CheckoutComponent,
     JoinComponent,
-    StripeFormComponent
+  
   ],
   imports: [
     BrowserModule,
