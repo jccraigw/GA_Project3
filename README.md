@@ -31,13 +31,20 @@ CHECKOUT PAGE
 - As a end user I want to be able to edit the shipping address of the purchase if needed
 - As a end user I want to be able to input my card information when ready to purchase items
 
+## Schema
+
+[Imgur](http://i.imgur.com/RXCGRLp.png)
 
 ## Wireframes
 
-Links will be uploaded later with the pictures of wireframes.
+1. [Imgur](http://i.imgur.com/XKAyUuD.jpg)
+2. [Imgur](http://i.imgur.com/Xa7zeP6.jpg)
+3. [Imgur](http://i.imgur.com/NCZwOkP.jpg)
 
-## Schema
-[Imgur](http://i.imgur.com/RXCGRLp.png)
+
+## Development Workflow
+
+- https://trello.com/b/G3j1S3W8/project-3-store
 
 ## Technologies Used
 
@@ -49,10 +56,6 @@ Links will be uploaded later with the pictures of wireframes.
 - Ruby
 - Sinatra
 - SPA
-
-## Development Workflow
-
--https://trello.com/b/G3j1S3W8/project-3-store
 
 ## What Is Unfinished?
 
