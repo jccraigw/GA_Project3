@@ -51,7 +51,7 @@ CHECKOUT PAGE
 - HTML 5
 - CSS 3
 - Javascript
-- Typescipt
+- Typescript
 - Angular 4
 - Ruby
 - Sinatra
