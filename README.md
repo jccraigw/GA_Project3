@@ -2,7 +2,7 @@
 
 NoxLOGO - eCommerce Clothing Store - WDI PROJECT 3
 
-- Test the application here! - 
+- Test the application here! - https://noxlogo.herokuapp.com
 - Use the following information to login:
 - Email: test@test.com
 - Password: test
