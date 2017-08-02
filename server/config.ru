@@ -1,7 +1,6 @@
 require 'bundler'
 Bundler.require
 
-
 require './models/UserModel'
 require './models/ProductModel'
 require './models/OrderModel'
@@ -21,7 +20,6 @@ ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
   database: 'store'
 )
-
 
 map('/products'){run ProductController}
 map('/users'){run UserController}	

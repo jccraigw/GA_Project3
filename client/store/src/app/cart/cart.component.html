@@ -4,43 +4,31 @@
 			<a (click)="back()"><div class="logo">NOxLOGO</div></a>
 		</div>	
 	</div>
-
 	<div class="main_wrapper">
 		<div class="cart_details">
-				<h4>SHOPPING CART</h4>
-		
-
-		<div class="colomn_headers">
-		
-			<div class="colomn_text1">Item</div>
-			<div class="colomn_text2">Price</div>
-			<div class="colomn_text3">Size</div>
-			<div class="colomn_text4">Qty</div>	
-
-		</div>
-			
+			<h4>SHOPPING CART</h4>
+	<div class="colomn_headers">
+		<div class="colomn_text1">Item</div>
+		<div class="colomn_text2">Price</div>
+		<div class="colomn_text3">Size</div>
+		<div class="colomn_text4">Qty</div>	
+	</div>		
 		<tr *ngFor="let order of orders">
 			<div class="order_details">
-
 				<div class="order_img"><img src="{{order.image_url}}" width="150" height="250"></div>
 				<div class="order_name"><td>{{order.name}}</td></div>
-			
 				<div class="order_price"><td>{{order.price}}</td></div>
 			<!-- 	<div class="order_color"><td>{{order.color}}</td></div> -->
 				<div class="order_size"><td>{{order.size}}</td></div>
-
 				<div class="order_qty"><td>{{order.quantity}}</td></div>
-			
 			</div>
-				<button class="delete_btn" (click)="deleteOrder(order)">Delete</button>
-				
+			<button class="delete_btn" (click)="deleteOrder(order)">Delete</button>	
 		</tr>
 		</div>
 		<div class="summary">
 			<h4>Order Total</h4>
 			<br><br>
 			<span>$</span>{{total}}<br><br>
-
 			<button class="checkout_btn" (click)="checkoutOrder()">checkout</button>
 		</div>
 	</div>

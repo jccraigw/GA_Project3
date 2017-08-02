@@ -15,7 +15,7 @@ class Product{
 
 class Order{
 
-   id: number;
+  id: number;
   name: string;
   price: number;
   color: string;
@@ -48,122 +48,88 @@ export class DetailComponent {
   newOrder: Order = new Order();
   review: Review[] = [];
   newReview: Review = new Review();
-    showUploadForm: boolean = false;
-   qtys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; 
+  showUploadForm: boolean = false;
+  qtys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; 
   order2 = {
-
     qty: 1
   };
   types = [ 'S', 'M', 'L', 'XL' ];
-   order = {
-      type: 'M'          
+    order = {
+    type: 'M'          
   }; 
   cart_num: number;
   
-
- 
-
-  
-  
-
-
   constructor(private route: ActivatedRoute, private http: Http,  private router: Router) {
   	let id = this.route.snapshot.params.id;
   	this.getProduct(id);
-
- 
-      this.getReviews(id);
-  
+    this.getReviews(id); 
   }
 
-
-    callType(value){
+  callType(value){
     console.log(value);
     this.order.type=value;
   }
-    callQty(num){
+  
+  callQty(num){
     console.log(num);
     this.order2.qty=num;
   }
 
   getProduct(id){
-
   	this.http.get('http://localhost:9393/products/' + id +'?token=' + window.localStorage.token).subscribe(response =>{
-
-  		this.product = response.json();
+      this.product = response.json();
   	}, err =>{
 
        //if permission to page is denied
-       if(err.status === 403){
-
-         this.router.navigate(['/login'])
-
-       }else{
-
-         alert("ERROR");
-       }
-     })
-
+      if(err.status === 403){
+        this.router.navigate(['/login'])
+      }else{
+        alert("ERROR");
+      }
+    })
   }
   getReviews(id){
     this.http.get('http://localhost:9393/reviews/' + id +'?token=' + window.localStorage.token).subscribe(response =>{
-
-
       this.review = response.json();
     })
-
   }
 
   orderProduct(product){
+    this.newOrder.name = product.name;
+    this.newOrder.id_users = window.localStorage.id_user * 1;
+    this.newOrder.id_products = product.id;
+    this.newOrder.quantity =this.order2.qty;
+    this.newOrder.price = product.price;
+    this.newOrder.size = this.order.type;
+    this.newOrder.color = product.color;
+    this.newOrder.image_url = product.image_url;
 
-     this.newOrder.name = product.name;
-     this.newOrder.id_users = window.localStorage.id_user * 1;
-     this.newOrder.id_products = product.id;
-     this.newOrder.quantity =this.order2.qty;
-     this.newOrder.price = product.price;
-     this.newOrder.size = this.order.type;
-     this.newOrder.color = product.color;
-     this.newOrder.image_url = product.image_url;
-
-     this.http.post('http://localhost:9393/orders?token=' + window.localStorage.token, this.newOrder).subscribe(response =>{
-
-             
-         window.localStorage.setItem("cart_num", response.json().cart_num)
-
-          this.router.navigate(['/orders/cart'])
+    this.http.post('http://localhost:9393/orders?token=' + window.localStorage.token, this.newOrder).subscribe(response =>{    
+      window.localStorage.setItem("cart_num", response.json().cart_num)
+      this.router.navigate(['/orders/cart'])
     }, err =>{
 
        //if permission to page is denied
-       if(err.status === 403){
+      if(err.status === 403){
+        this.router.navigate(['/login'])
 
-         this.router.navigate(['/login'])
-
-       }else{
-
-         alert("ERROR");
-       }
-     })
-
+      }else{
+        alert("ERROR");
+      }
+    })
   }
+
   postReview(){
     let id = this.route.snapshot.params.id;
     // send post route to create new review
-      this.showUploadForm = false
+    this.showUploadForm = false
     this.newReview.id_products = id;
     this.http.post('http://localhost:9393/reviews?token=' + window.localStorage.token, this.newReview).subscribe(response =>{
-
-          console.log(this.review)
-          this.review = response.json();
-
+      this.review = response.json();
     })
-
-
   }
 
   back(){
-
      this.router.navigate(['/products'])
-   }
-
-
+  }
 }

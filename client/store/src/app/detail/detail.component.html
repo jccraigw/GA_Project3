@@ -13,37 +13,29 @@
 			<div>{{product.name}}</div>
 			<div class="price">${{product.price}}</div><br>
 			<!-- <div>{{product.color}}</div> -->
-			Size:
-	 <select class="form-control" #t (change)="callType(t.value)">
-      <option *ngFor="let type of types" [value]="type">{{type}}</option>
-    </select><br><br>
-
-    		Qty:
-    	<select class="form-control" #b (change)="callQty(b.value)">
-      <option *ngFor="let qty of qtys" [value]="qty">{{qty}}</option>
-    </select><br><br>
-		<!-- 	<input [(ngModel)]="newOrder.quantity" placeholder="Quantity"><br><br> -->
+			<span>Size:</span>
+			<select class="form-control" #t (change)="callType(t.value)">
+		      	<option *ngFor="let type of types" [value]="type">{{type}}</option>
+		    </select><br><br>
+		    		<span>Qty:</span>
+		    <select class="form-control" #b (change)="callQty(b.value)">
+		      	<option *ngFor="let qty of qtys" [value]="qty">{{qty}}</option>
+		    </select><br><br>
+				<!-- 	<input [(ngModel)]="newOrder.quantity" placeholder="Quantity"><br><br> -->
 			<button class="add_btn" (click)="orderProduct(product)">Add to Cart</button>
-
-				<div class="review"><br><br>
-			<button class="review_btn" (click)="showUploadForm = !showUploadForm">Write A Review</button>
-	
-			<div *ngIf="showUploadForm">	
-			
-				<input [(ngModel)]="newReview.name" placeholder="name"><br>
+			<div class="review"><br><br>
+				<button class="review_btn" (click)="showUploadForm = !showUploadForm">Write A Review</button>
+				<div *ngIf="showUploadForm">	
+					<input [(ngModel)]="newReview.name" placeholder="name"><br>
 					<input [(ngModel)]="newReview.text" placeholder="text"><br>
-				<button class="submit_btn" (click)="postReview()">Submit</button>
+					<button class="submit_btn" (click)="postReview()">Submit</button>
+				</div>
+				<br><br>
+				<div class="reviews_title">Reviews</div>
+				<br>
+				<div class="reviews" *ngFor="let rev of review">{{rev.name}} : {{rev.text}}</div>		
 			</div>
-			<br><br>
-			<div class="reviews_title">Reviews</div>
-			<br>
-
-			<div class="reviews" *ngFor="let rev of review">{{rev.name}} : {{rev.text}}</div>
-			
 		</div>
-		
-		</div>
-	
 	</div>
 </div>	
 

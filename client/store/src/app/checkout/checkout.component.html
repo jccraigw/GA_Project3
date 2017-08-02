@@ -20,42 +20,34 @@
 			</div>
 			</tr>	
 		</div>
-		<div class="order_total">
-				
+		<div class="order_total">		
 			<h4>Total</h4>
-			${{total}}<br>
-		</div>
-			
+			<span>${{total}}</span><br>
+		</div>		
 		<div class="shipping_wrapper">
 			<h4>Shipping Address</h4>
 			<div *ngIf="user">
-			{{user.name}}<br>
-			{{user.street}}<br>
-			{{user.street_pt_two}}<br>
-			{{user.city}}<br>
-			{{user.state}}<br>
-			{{user.zip}}<br>
-			</div>
-			
-
-			<button class="edit_btn" (click)="editShipping(user)">Edit</button>
-
-			<div *ngIf="showEditForm">	
-				<input class="form_field" [(ngModel)]="newShipping.name" placeholder="name"><br>
-				<input class="form_field"  [(ngModel)]="newShipping.street" placeholder="street"><br>
-				<input class="form_field"  [(ngModel)]="newShipping.street_pt_two" placeholder="street part two"><br>
-				<input class="form_field" [(ngModel)]="newShipping.city" placeholder="city"><br>
-				<input class="form_field" [(ngModel)]="newShipping.state" placeholder="state"><br>
-				<input class="form_field"  [(ngModel)]="newShipping.zip" placeholder="zip"><br>
-				<button class="edit_btn"  (click)="patchShipping()">Submit</button>
-			</div>
+			<span>{{user.name}}</span><br>
+			<span>{{user.street}}</span><br>
+			<span>{{user.street_pt_two}}</span><br>
+			<span>{{user.city}}</span><br>
+			<span>{{user.state}}</span><br>
+			<span>{{user.zip}}</span><br>
+		</div>
+		<button class="edit_btn" (click)="editShipping(user)">Edit</button>
+		<div *ngIf="showEditForm">	
+			<input class="form_field" [(ngModel)]="newShipping.name" placeholder="name"><br>
+			<input class="form_field"  [(ngModel)]="newShipping.street" placeholder="street"><br>
+			<input class="form_field"  [(ngModel)]="newShipping.street_pt_two" placeholder="street part two"><br>
+			<input class="form_field" [(ngModel)]="newShipping.city" placeholder="city"><br>
+			<input class="form_field" [(ngModel)]="newShipping.state" placeholder="state"><br>
+			<input class="form_field"  [(ngModel)]="newShipping.zip" placeholder="zip"><br>
+			<button class="edit_btn"  (click)="patchShipping()">Submit</button>
+		</div>
 		</div>
 		<div class="payment">
-		
-				<button class="purchase_btn" (click)="openCheckout()">Purchase</button>
-
+			<button class="purchase_btn" (click)="openCheckout()">Purchase</button>
 		</div>
-
 	</div>	
 </div>
 

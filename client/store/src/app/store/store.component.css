@@ -1,21 +1,14 @@
  
-
  *{
 
 	// border: 1px solid red;
 }
 .home_wrapper{
-
 	margin-top: -27px;
-
-
 }
-
 .header_wrapper{
-
 	display: flex;
 	flex-direction: row;
-
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
@@ -29,30 +22,19 @@
 	border-bottom: 1px solid #d4d7db;
 	-webkit-transform: translateZ(0);
 	backface-visibility: hidden;
-
-
-
-
 }
 .logo_wrapper{
 	flex-grow: 1;
-
 }
 .logo{
-
 	margin-left: 20px;
 }
 .search_wrapper{
 	flex-grow: 1;
 	text-align: center;
-
-		
-
 }
 .search_btn{
-
-
-border: none;
+	border: none;
 	background-color: white;
 	outline: none;
 }
@@ -60,27 +42,18 @@ border: none;
 
 	flex-grow: 1;
 	text-align: center;
-
-
 }
 .login_wrapper{
 	flex-grow: 1;
 	text-align: center;
-	
-	
-
-
 }
-
 .form-field{
 	width: 50%;
 	height: 20px;
 	margin-bottom: 10px;
-
 	border-radius: 0px;
 	border: none;
 	border-bottom: 1px solid #d4d7db;
-
 	padding-left: 10px;
 	outline: none;
 }
@@ -88,13 +61,9 @@ border: none;
 	margin-top: 30px;
 	width: 100%;
 	display: flex;
-	justify-content: center;
-
-	
+	justify-content: center;	
 }
 .product_wrapper{
-
-	
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -102,62 +71,32 @@ border: none;
 	flex-wrap: wrap;
 	margin-top: 100px;
 	margin-left: 70px;
-	
-
-	
 }
-.products{
-	
-    
+.products{ 
     height:380px;
     width: calc(100% * (1/4) - 10px - 1px);
- 	margin-bottom: 50px;
-
-
-	
-}
-.product_img{
-
-	
+ 	margin-bottom: 50px;	
 }
 .product_name{
 	text-align: left;
 	width: 250px;
-
-}
-.product_price{
-
-
-
-}
-.footer_wrapper{
-	
-
-
-	
 }
 .logout_btn{
-
-
 	border: none;
 	background-color: white;
 	outline: none;
 }
 .cart_btn{
-
 	border: none;
 	background-color: white;
 	outline: none;
-		font-size: 15px;
-
+	font-size: 15px;
 }
 .cart_num{
-
 	color: red;
 	font-size: 15px;
 }
-
 a:hover {
- cursor:pointer;
+ 	cursor:pointer;
 }
 

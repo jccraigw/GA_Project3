@@ -28,117 +28,93 @@ export class StoreComponent{
   cart_num: number;
   search: string="";
    
-
-
-
   constructor(private http: Http, private router: Router) {
-  		this.getProducts();
+    
+    this.getProducts();
+  }
 
-   }
+  getProducts(){
+    
+    this.http.get('http://localhost:9393/products?token=' + window.localStorage.token).subscribe(response => {
+      this.products = response.json();
+      this.cart_num = window.localStorage.cart_num;
+    }, err =>{
+    
+    //if permission to page is denied
+    if(err.status === 403){
+      this.router.navigate(['/login'])
+    }else{
+     	alert("ERROR");
+    }
+    })
+  }
 
-   getProducts(){
-   	
-   	this.http.get('http://localhost:9393/products?token=' + window.localStorage.token).subscribe(response => {
+  postProduct(){
 
-   		this.products = response.json();
-       
-       this.cart_num = window.localStorage.cart_num;
+    this.showUploadForm = false
+    this.http.post('http://localhost:9393/products?token=' + window.localStorage.token, this.newProduct).subscribe(response => {
+      this.products = response.json();
+    }, err =>{
+    
+    //if permission to page is denied
+    if(err.status === 403){
+      this.router.navigate(['/login'])
+    }else{
+     	alert("ERROR");
+    }
+    })
+  }
+     
+  patchProduct(){
 
-   	}, err =>{
+    this.showEditForm = false
+    this.http.patch('http://localhost:9393/products/' + this.currentProduct.id + '?token=' + window.localStorage.token , this.currentProduct).subscribe(response =>{
+      this.products = response.json();
+    })
+  }
 
-   		//if permission to page is denied
-   		if(err.status === 403){
+  editProduct(product){
 
-   			this.router.navigate(['/login'])
+    this.showEditForm = true;
+    this.currentProduct = Object.assign({}, product)
+  }
 
-   		}else{
+  deleteProduct(product){
 
-   			alert("ERROR");
-   		}
-   	})
+    this.http.delete('http://localhost:9393/products/' + product.id + '?token=' + window.localStorage.token).subscribe(response => {
+     	this.products = response.json();
+    })
+  }
 
-   }
-
-   postProduct(){
-
-   		this.showUploadForm = false
-   		this.http.post('http://localhost:9393/products?token=' + window.localStorage.token, this.newProduct).subscribe(response => {
-
-   			this.products = response.json();
-   		}, err =>{
-
-   		//if permission to page is denied
-   		if(err.status === 403){
-
-   			this.router.navigate(['/login'])
-
-   		}else{
-
-   			alert("ERROR");
-   		}
-   	})
-
-   }
-   patchProduct(){
-
-   		this.showEditForm = false
-   		this.http.patch('http://localhost:9393/products/' + this.currentProduct.id + '?token=' + window.localStorage.token , this.currentProduct).subscribe(response =>{
-
-
-   			this.products = response.json();
-   		})
-
-   }
-   editProduct(product){
-
-   	this.showEditForm = true;
-   	this.currentProduct = Object.assign({}, product)
-
-
-   }
-   deleteProduct(product){
-
-   		this.http.delete('http://localhost:9393/products/' + product.id + '?token=' + window.localStorage.token).subscribe(response => {
-
-   				this.products = response.json();
-
-   		})
-   }
-   goToProduct(product){
+  goToProduct(product){
+    
     this.router.navigate(['/products/', product.id])
   }
-   login(){
+     
+  login(){
+    
+    this.router.navigate(['/login'])
+  }
 
-     this.router.navigate(['/login'])
+  logout(){
 
-   }
+    window.localStorage.clear();
+    this.router.navigate(['/login'])
+  }
 
-   logout(){
+  getCart(){
 
-   		window.localStorage.clear();
-    	this.router.navigate(['/login'])
-   }
-   getCart(){
+    this.router.navigate(['/orders/cart'])
+  }
 
-     this.router.navigate(['/orders/cart'])
-   }
+  searchProducts(){
+       
+    this.http.post('http://localhost:9393/products/search' + '?token=' + window.localStorage.token, {name: this.search}).subscribe(response =>{
+      this.products = response.json();
+    })
+  }
 
-   searchProducts(){
-
-
-     this.http.post('http://localhost:9393/products/search' + '?token=' + window.localStorage.token, {name: this.search}).subscribe(response =>{
-
-
-         this.products = response.json();
-     })
-   }
-
- back(el) {
+  back(el) {
     el.scrollIntoView({ behavior: "smooth" });
-}
-
-
-
- 
-
+  }
 }

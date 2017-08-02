@@ -24,49 +24,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CartComponent{
 
-		orders: Order[] = [];
-		total: number;
-    cart_num: number;
+	orders: Order[] = [];
+	total: number;
+  cart_num: number;
 
 
   constructor(private http: Http, private router: Router) {
-
-  		this.getOrders();
-
-
+    this.getOrders();
   }
 
-
-
   getOrders(){
-
-
    	this.http.get('http://localhost:9393/orders/cart/' + window.localStorage.id_user + '?token=' + window.localStorage.token ).subscribe(response => {
-
-   		this.orders = response.json().orders;
+   	  this.orders = response.json().orders;
    		this.total = response.json().total;
-        window.localStorage.setItem("cart_num", response.json().cart_num)
-
+      window.localStorage.setItem("cart_num", response.json().cart_num)
    	}, err =>{
 
    		//if permission to page is denied
    		if(err.status === 403){
-
    			this.router.navigate(['/login'])
-
    		}else{
-
    			alert("ERROR");
    		}
    	})
   }
 
   deleteOrder(order){
-
-
   	this.http.delete('http://localhost:9393/orders/cart/' + order.id + '?token=' + window.localStorage.token).subscribe(response => {
-
-
   		this.orders = response.json().orders;
   		this.total = response.json().total;
       window.localStorage.setItem("cart_num", response.json().cart_num)
@@ -74,25 +58,18 @@ export class CartComponent{
 
    		//if permission to page is denied
    		if(err.status === 403){
-
    			this.router.navigate(['/login'])
-
    		}else{
-
    			alert("ERROR");
    		}
    	})
-
-
   }
 
   checkoutOrder(){
-
   	this.router.navigate(['/checkout'])
   }
-    back(){
-
-     this.router.navigate(['/products'])
-   }
-
+    
+  back(){
+    this.router.navigate(['/products'])
+  }
 }

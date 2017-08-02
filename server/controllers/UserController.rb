@@ -6,10 +6,12 @@ class UserController < ApplicationController
     user = User.all
     user.to_json
   end
+
   get '/register' do
     user = User.all
     user.to_json
   end
+
   #post request to /users/register
   post '/register' do
     user_details = JSON.parse(request.body.read)
@@ -34,18 +36,16 @@ class UserController < ApplicationController
     if user && user.authenticate(user_details["password"])
       user.to_json
     else
-     {message: "ACCESS DENIED" }.to_json
+      {message: "ACCESS DENIED" }.to_json
     end
   end
 
   patch '/:id' do
     id= params[:id]
-
     user_details = JSON.parse(request.body.read)
     user = User.find(id)
     user.update_attributes(user_details)
     user.save
     user.to_json
-
   end
 end

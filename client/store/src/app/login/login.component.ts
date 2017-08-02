@@ -11,29 +11,21 @@ export class LoginComponent{
 
 	user = {};
 
-  constructor(private http: Http, private router: Router) { 
-
-
-  }
+  constructor(private http: Http, private router: Router) {}
 
   login(){
     this.http.post('http://localhost:9393/users/login', this.user).subscribe(response => {
       window.localStorage.setItem("token",response.json().token)
-    
       window.localStorage.setItem("id_user", response.json().id)
       this.router.navigate(['/products'])
     })
   }
 
   goToJoin(){
-
-
-     this.router.navigate(['/register'])
+    this.router.navigate(['/register'])
   }
-    back(){
-
-     this.router.navigate(['/login'])
-   }
-
- 
+  
+  back(){
+    this.router.navigate(['/login'])
+  } 
 }
